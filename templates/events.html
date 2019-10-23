@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Events{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="../static/style.css" />
+{% endblock %}
+{% block content %}
+  <div class="events">
+    {% for event, event_value in events.items() %}
+    <div class="event">
+      {% for title, value in event_value.items() %}
+        {% if title == "title" %}
+          <h3>{{ value }}</h3>
+        {% endif %}
+        {% if title == "sources" %}
+          {% for sources in value %}
+            {% for source, source_value in sources.items() %}
+              {% if source == "url" %}
+                <a href="{{ source_value }}" target="_blank">Click here!</a>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        {% endif %}
+        {% if title == "categories" %}
+          {% for categories in value %}
+            {% for categorie, categorie_value in categories.items() %}
+              {% if categorie == "title" %}
+                {{ categorie_value }}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        {% endif %}
+        {% if title == "geometries" %}
+          {% for geometries in value %}
+            {% for geometry, geometry_value in geometries.items() %}
+              {% if geometry == "coordinates" %}
+                <img src="{{ imgUrl[geometry_value[0],geometry_value[1]] }}" alt="">
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
