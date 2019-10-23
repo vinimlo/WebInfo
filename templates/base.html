@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="../static/style.css" />
+     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} - WebInfo </title>
+    {% endblock %}
+</head>
+<body>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+        {% block footer %}
+        &copy; Copyleft 2019 by <a href="http://domain.invalid/">@vinimlo</a>.
+        {% endblock %}
+    </div>
+</body>
+</html>
